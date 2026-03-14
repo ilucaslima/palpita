@@ -1,5 +1,6 @@
 package com.palpita.palpita.service;
 
+import com.palpita.palpita.entity.Role;
 import com.palpita.palpita.entity.User;
 import com.palpita.palpita.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +24,8 @@ public class UserService {
 
   public User save(User user){
     user.setPassword(passwordEncoder.encode(user.getPassword()));
+    user.setRole(Role.USER);
+
     return userRepository.save(user);
   }
 }
