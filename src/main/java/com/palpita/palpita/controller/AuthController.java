@@ -2,6 +2,7 @@ package com.palpita.palpita.controller;
 
 import com.palpita.palpita.security.JwtService;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,11 @@ public class AuthController {
     String token = jwtService.generateToken(email);
 
     return Map.of("token", token);
+  }
+
+  @GetMapping("/admin")
+  @PreAuthorize("hasRole('ADMIN')")
+  public String admin(){
+    return "only admin";
   }
 }
