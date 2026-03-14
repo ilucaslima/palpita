@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-  private final String SECRET = "palpita-secret-key";
+  private final String SECRET = "z2ayeo7sfIURSlMksRUOphzJv3tnZHHeKQ6ICRJ5hvyac9TzHjZtkAb3wazpcuW";
 
   private SecretKey getKey() {
     return Keys.hmacShaKeyFor(SECRET.getBytes());
