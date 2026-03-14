@@ -38,7 +38,7 @@ public class AuthController {
     return Map.of("token", token);
   }
 
-  @GetMapping("/admin")
+    @GetMapping("/admin")
   @PreAuthorize("hasRole('ADMIN')")
   public String admin(){
     return "only admin";
