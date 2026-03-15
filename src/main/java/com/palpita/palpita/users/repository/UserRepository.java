@@ -1,6 +1,6 @@
-package com.palpita.palpita.repository;
+package com.palpita.palpita.users.repository;
 
-import com.palpita.palpita.entity.User;
+import com.palpita.palpita.users.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.palpita.palpita.dto;
+package com.palpita.palpita.auth.dto;
 
 public class RegisterRequest {
   private String email;

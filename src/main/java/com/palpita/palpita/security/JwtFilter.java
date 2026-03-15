@@ -1,6 +1,6 @@
 package com.palpita.palpita.security;
 
-import com.palpita.palpita.service.CustomUserDetailsService;
+import com.palpita.palpita.users.service.CustomUserDetailsService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

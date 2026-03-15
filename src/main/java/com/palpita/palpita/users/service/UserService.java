@@ -1,8 +1,8 @@
-package com.palpita.palpita.service;
+package com.palpita.palpita.users.service;
 
-import com.palpita.palpita.entity.Role;
-import com.palpita.palpita.entity.User;
-import com.palpita.palpita.repository.UserRepository;
+import com.palpita.palpita.users.entity.Role;
+import com.palpita.palpita.users.entity.User;
+import com.palpita.palpita.users.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

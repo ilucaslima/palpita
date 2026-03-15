@@ -1,4 +1,4 @@
-package com.palpita.palpita.entity;
+package com.palpita.palpita.users.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

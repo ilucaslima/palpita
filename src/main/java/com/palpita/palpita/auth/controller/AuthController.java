@@ -1,16 +1,15 @@
-package com.palpita.palpita.controller;
+package com.palpita.palpita.auth.controller;
 
-import com.palpita.palpita.dto.RegisterRequest;
-import com.palpita.palpita.entity.Role;
-import com.palpita.palpita.entity.User;
-import com.palpita.palpita.repository.UserRepository;
+import com.palpita.palpita.auth.dto.RegisterRequest;
+import com.palpita.palpita.users.entity.Role;
+import com.palpita.palpita.users.entity.User;
+import com.palpita.palpita.users.repository.UserRepository;
 import com.palpita.palpita.security.JwtService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.*;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;

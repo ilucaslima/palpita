@@ -1,7 +1,6 @@
 package com.palpita.palpita.config;
 
 import com.palpita.palpita.security.JwtFilter;
-import com.palpita.palpita.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
