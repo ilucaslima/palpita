@@ -44,6 +44,12 @@ public class MatchService {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Game date has passed");
     }
 
+    boolean conflict = matchRepository.existsByTeamsAndDate(req.getTeamA(), req.getTeamB(), req.getDate());
+
+    if (conflict) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Match already exists at this date/time");
+    }
+
     match.setScoreA(0);
     match.setScoreB(0);
     match.setStatusMatch(StatusMatch.SCHEDULED);
