@@ -1,7 +1,11 @@
 package com.palpita.palpita.users.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.palpita.palpita.bet.entity.Bet;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,4 +26,8 @@ public class User {
   private String password;
 
   private Integer points;
+
+  @OneToMany(mappedBy = "user")
+  @JsonManagedReference
+  private List<Bet> bets;
 }

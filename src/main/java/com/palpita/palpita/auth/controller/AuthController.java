@@ -56,6 +56,7 @@ public class AuthController {
           user.getEmail(),
           user.getRole().name(),
           user.getPoints(),
+          user.getBets(),
           token
       );
 

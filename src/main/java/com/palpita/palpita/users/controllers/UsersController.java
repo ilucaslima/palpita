@@ -20,7 +20,14 @@ public class UsersController {
   @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<?> makeAdmin(@PathVariable Long userId){
     User user = userService.makeAdmin(userId);
-    UserResponse userResponse = new UserResponse(user.getId(), user.getEmail(), user.getRole().name(), user.getPoints(), "");
+    UserResponse userResponse = new UserResponse(
+        user.getId(),
+        user.getEmail(),
+        user.getRole().name(),
+        user.getPoints(),
+        user.getBets(),
+        ""
+    );
     return ResponseEntity.ok(userResponse);
   }
 }
