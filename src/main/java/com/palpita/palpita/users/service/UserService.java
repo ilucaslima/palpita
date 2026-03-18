@@ -49,15 +49,12 @@ public class UserService {
 
     userRepository.save(user);
 
-    String token = jwtService.generateToken(user.getEmail());
-
     return new UserResponse(
         user.getId(),
         user.getEmail(),
         user.getRole().name(),
         user.getPoints(),
-        user.getBets(),
-        token
+        user.getBets()
     );
   }
 

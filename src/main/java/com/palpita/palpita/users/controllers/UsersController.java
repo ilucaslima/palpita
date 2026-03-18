@@ -25,8 +25,7 @@ public class UsersController {
         user.getEmail(),
         user.getRole().name(),
         user.getPoints(),
-        user.getBets(),
-        ""
+        user.getBets()
     );
     return ResponseEntity.ok(userResponse);
   }
