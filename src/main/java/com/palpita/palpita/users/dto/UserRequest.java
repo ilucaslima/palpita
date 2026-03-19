@@ -1,4 +1,4 @@
-package com.palpita.palpita.auth.dto;
+package com.palpita.palpita.users.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

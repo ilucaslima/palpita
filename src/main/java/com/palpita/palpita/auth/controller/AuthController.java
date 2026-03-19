@@ -1,6 +1,6 @@
 package com.palpita.palpita.auth.controller;
 
-import com.palpita.palpita.auth.dto.UserResponse;
+import com.palpita.palpita.users.dto.UserResponse;
 import com.palpita.palpita.users.entity.User;
 import com.palpita.palpita.security.JwtService;
 
@@ -58,8 +58,7 @@ public class AuthController {
           user.getId(),
           user.getEmail(),
           user.getRole().name(),
-          user.getPoints(),
-          user.getBets()
+          user.getPoints()
       );
 
       return ResponseEntity.ok(userResponse);

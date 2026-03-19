@@ -1,6 +1,6 @@
 package com.palpita.palpita.users.controllers;
 
-import com.palpita.palpita.auth.dto.UserResponse;
+import com.palpita.palpita.users.dto.UserResponse;
 import com.palpita.palpita.users.entity.User;
 import com.palpita.palpita.users.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +24,7 @@ public class UsersController {
         user.getId(),
         user.getEmail(),
         user.getRole().name(),
-        user.getPoints(),
-        user.getBets()
+        user.getPoints()
     );
     return ResponseEntity.ok(userResponse);
   }

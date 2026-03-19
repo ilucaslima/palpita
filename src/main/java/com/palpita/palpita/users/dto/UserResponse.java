@@ -1,5 +1,6 @@
-package com.palpita.palpita.auth.dto;
+package com.palpita.palpita.users.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,13 +15,11 @@ public class UserResponse {
   String email;
   String role;
   Integer points;
-  List<?> bets;
 
-  public UserResponse(Long id, String email, String role, Integer points, List<?> bets){
+  public UserResponse(Long id, String email, String role, Integer points){
     this.id = id;
     this.email = email;
     this.role = role;
     this.points = points;
-    this.bets = bets;
   }
 }

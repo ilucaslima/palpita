@@ -1,17 +1,14 @@
 package com.palpita.palpita.users.service;
 
-import com.palpita.palpita.auth.dto.UserResponse;
-import com.palpita.palpita.bet.entity.Bet;
+import com.palpita.palpita.users.dto.UserResponse;
 import com.palpita.palpita.bet.repository.BetRepository;
 import com.palpita.palpita.security.JwtService;
 import com.palpita.palpita.users.entity.Role;
 import com.palpita.palpita.users.entity.User;
 import com.palpita.palpita.users.repository.UserRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,7 +35,6 @@ public class UserService {
   }
 
   public UserResponse save(User user) {
-
     if (userRepository.findByEmail(user.getEmail()).isPresent()) {
       throw new RuntimeException("Error: Email já cadastrado!!!");
     }
@@ -46,15 +42,13 @@ public class UserService {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setRole(Role.USER);
     user.setPoints(0);
-
     userRepository.save(user);
 
     return new UserResponse(
         user.getId(),
         user.getEmail(),
         user.getRole().name(),
-        user.getPoints(),
-        user.getBets()
+        user.getPoints()
     );
   }
 

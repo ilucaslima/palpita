@@ -26,7 +26,6 @@ public class Bet {
 
   @ManyToOne
   @JoinColumn(name = "match_id")
-  @JsonBackReference
   private Match match;
 
   private Integer guessA;

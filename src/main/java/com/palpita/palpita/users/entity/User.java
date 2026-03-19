@@ -5,6 +5,7 @@ import com.palpita.palpita.bet.entity.Bet;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,5 +30,5 @@ public class User {
 
   @OneToMany(mappedBy = "user")
   @JsonManagedReference
-  private List<Bet> bets;
+  private List<Bet> bets = new ArrayList<>();
 }
