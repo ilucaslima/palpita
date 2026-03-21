@@ -2,6 +2,7 @@ package com.palpita.palpita.bet.controller;
 
 import com.palpita.palpita.bet.dto.BetRequest;
 import com.palpita.palpita.bet.dto.BetResponse;
+import com.palpita.palpita.bet.entity.Bet;
 import com.palpita.palpita.bet.service.BetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class BetController {
     this.betService = betService;
   }
 
-  @GetMapping("/")
+  @GetMapping()
   public ResponseEntity<List<BetResponse>> listAll(){
     return ResponseEntity.ok(betService.listAllWithDetails());
   }
@@ -32,5 +33,13 @@ public class BetController {
   @GetMapping("/myBets")
   public ResponseEntity<List<BetResponse>> listBets(){
     return ResponseEntity.ok(betService.listBetsByUserWithDetails());
+  }
+
+  @PutMapping("/{id}/update")
+  public ResponseEntity<Bet> update(
+      @PathVariable Long id,
+      @RequestBody BetRequest req
+  ){
+    return ResponseEntity.ok(betService.update(id, req));
   }
 }
