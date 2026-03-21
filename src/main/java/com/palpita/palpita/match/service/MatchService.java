@@ -4,7 +4,11 @@ import com.palpita.palpita.match.dto.RegisterMatch;
 import com.palpita.palpita.match.entity.Match;
 import com.palpita.palpita.match.entity.StatusMatch;
 import com.palpita.palpita.match.repository.MatchRepository;
+import com.palpita.palpita.users.entity.User;
+import com.palpita.palpita.users.repository.UserRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -15,9 +19,14 @@ import java.util.List;
 @Service
 public class MatchService {
   private final MatchRepository matchRepository;
+  private final UserRepository userRepository;
 
-  public MatchService(MatchRepository matchRepository){
+  public MatchService(
+      MatchRepository matchRepository,
+      UserRepository userRepository
+  ){
     this.matchRepository = matchRepository;
+    this.userRepository = userRepository;
   }
 
   public Match getMatchById(Long id){
@@ -76,9 +85,18 @@ public class MatchService {
   public Match save(RegisterMatch req) {
     Match match = new Match();
 
+    Authentication auth = SecurityContextHolder.getContext()
+            .getAuthentication();
+
+    String email = auth.getName();
+
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
     match.setTeamA(req.getTeamA());
     match.setTeamB(req.getTeamB());
     match.setDate(req.getDate());
+    match.setUser(user);
 
     if(req.getDate().isBefore(LocalDateTime.now())){
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Game date has passed");

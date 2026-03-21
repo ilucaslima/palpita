@@ -1,6 +1,7 @@
 package com.palpita.palpita.match.dto;
 
 import com.palpita.palpita.match.entity.StatusMatch;
+import com.palpita.palpita.users.entity.User;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,5 @@ public class RegisterMatch {
     Integer scoreA;
     Integer scoreB;
     StatusMatch status;
+    User user;
 }
