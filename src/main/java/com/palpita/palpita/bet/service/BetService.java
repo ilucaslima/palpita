@@ -60,6 +60,12 @@ public class BetService {
     Match match = matchRepository.findById(bet.getMatchId())
         .orElseThrow(() -> new RuntimeException("Match not found"));
 
+    boolean alreadyExists = betRepository.existsByUserAndMatch(user, match);
+
+    if (alreadyExists) {
+      throw new RuntimeException("Você já fez um palpite para essa partida");
+    }
+
     betUser.setGuessA(bet.getGuessA());
     betUser.setGuessB(bet.getGuessB());
     betUser.setMatch(match);

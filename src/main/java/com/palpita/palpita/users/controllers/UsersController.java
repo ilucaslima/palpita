@@ -16,7 +16,7 @@ public class UsersController {
     this.userService = userService;
   }
 
-  @GetMapping("/{userId}/makeAdmin")
+  @PatchMapping("/{userId}/makeAdmin")
   @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<?> makeAdmin(@PathVariable Long userId){
     User user = userService.makeAdmin(userId);

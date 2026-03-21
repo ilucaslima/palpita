@@ -18,4 +18,6 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
       @Param("teamB") String teamB,
       @Param("date") LocalDateTime date
   );
+
+  boolean existsByTeamAAndTeamBAndDateAndIdNot(String teamA, String teamB, LocalDateTime date, Long id);
 }

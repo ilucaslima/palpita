@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/matches")
@@ -16,6 +18,16 @@ public class MatchController {
 
   public MatchController(MatchService matchService) {
     this.matchService = matchService;
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Match> getMatchById(@PathVariable Long id){
+    return ResponseEntity.ok(matchService.getMatchById(id));
+  }
+
+  @GetMapping()
+  public ResponseEntity<List<Match>> getAllMatches(){
+    return ResponseEntity.ok(matchService.getAllMatches());
   }
 
   @PreAuthorize("hasRole('ADMIN')")
@@ -36,5 +48,11 @@ public class MatchController {
   @PostMapping("/create")
   public ResponseEntity<Match> create(@RequestBody RegisterMatch req) {
     return ResponseEntity.ok(matchService.save(req));
+  }
+
+  @PreAuthorize("hasRole('ADMIN')")
+  @PutMapping("/{id}/update")
+  public ResponseEntity<Match> update( @PathVariable Long id, @RequestBody RegisterMatch req){
+    return ResponseEntity.ok(matchService.update(id, req));
   }
 }
