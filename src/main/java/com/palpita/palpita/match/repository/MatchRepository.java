@@ -1,11 +1,13 @@
 package com.palpita.palpita.match.repository;
 
 import com.palpita.palpita.match.entity.Match;
+import com.palpita.palpita.match.entity.StatusMatch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
@@ -20,4 +22,7 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
   );
 
   boolean existsByTeamAAndTeamBAndDateAndIdNot(String teamA, String teamB, LocalDateTime date, Long id);
+
+  List<Match> findByStatusMatchAndDateBefore(StatusMatch statusMatch, LocalDateTime dateBefore);
+
 }
