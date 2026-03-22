@@ -1,9 +1,9 @@
 package com.palpita.palpita.match.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.palpita.palpita.championship.entity.Championship;
 import com.palpita.palpita.users.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,4 +40,8 @@ public class Match {
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
   @JsonIdentityReference(alwaysAsId = true)
   private User user;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "championship_id", nullable = false)
+  private Championship championship;
 }

@@ -31,7 +31,7 @@ public class MatchStatusScheduler {
     }
   }
 
-  @Scheduled(fixedRate = 60000)
+  @Scheduled(cron = "0 */5 * * * *")
   public void finishCompletedMatches() {
     LocalDateTime twoHoursAgo = LocalDateTime.now().minusHours(2);
 
